@@ -37,7 +37,7 @@ const ProveedorCarrito = ({ children }) => {
     nombre: "Producto 3",
     cantidad: 1,
     image: ps5,
-    capacidad: "Capacidad: 512GB, 1TB, 2TB",
+    capacidad: "Capacidad: 512GB, 1TB, 2TB"
   },
   {
     id: 4,

@@ -41,14 +41,14 @@ const Slider = () => {
           alt="producto-img"
         />
         <h3>{productos[index]?.nombre}</h3>
-        <details>
-          <summary><b>Características</b>:</summary>
-          <p><b>{productos[index]?.camara}</b></p>
-          <p><b>{productos[index]?.capacidad}</b></p>
-          <p><b>{productos[index]?.pantalla}</b></p>
-          <p><b>{productos[index]?.procesador}</b></p>
-          <p><b>{productos[index]?.energía}</b></p>
-        </details>
+        <Features>
+          <h4>Características:</h4>
+          <p>{productos[index]?.camara}</p>
+          <p>{productos[index]?.capacidad}</p>
+          <p>{productos[index]?.pantalla}</p>
+          <p>{productos[index]?.procesador}</p>
+          <p>{productos[index]?.energía}</p>
+        </Features>
       </Producto>
     </SliderContainer>
   );
@@ -119,26 +119,6 @@ const Producto = styled.div`
     }
   }
 
-  details {
-    margin-bottom: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 6px 12px;
-    overflow: hidden;
-    height: 20vh;
-
-    @media (max-width: 900px) {
-      font-size: 12px;
-      padding: 5px 10px;
-      overflow-y: scroll;
-    }
-  }
-  
-  summary{
-    border: 1px solid #00b8e6;
-    padding: 6px 12px;
-  }
-
   h3 {
     margin: 10px 0;
   }
@@ -164,6 +144,24 @@ const Producto = styled.div`
   }
 `;
 
+const Features = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  padding: 0 12px;
+  overflow: hidden;
+  height: 20vh;
+  background-color: #8fdfff94;
+
+  @media (max-width: 900px) {
+    font-size: 12px;
+    padding: 5px 10px;
+    overflow-y: scroll;
+  }
+`;
 
 const Boton = styled.button`
   padding: 10px 20px;
