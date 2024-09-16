@@ -27,12 +27,9 @@ const Productos = () => {
         <Contenedor>
             {productos.length > 0 &&
             productos.map((producto, index) => (
-                <Lista key={index}>
+                <Lista key={index} onClick={() => manejarAgregarProducto(producto.id, producto.nombre)}>
                     <li>{producto.nombre}</li>
-                    <img 
-                        src={producto.image} alt="Imagen de producto"
-                        onClick={() => manejarAgregarProducto(producto.id, producto.nombre)}
-                    />
+                    <img src={producto.image} alt="Imagen de producto" />
                     <Boton onClick={() => manejarAgregarProducto(producto.id, producto.nombre)}>
                         Agregar al Carrito
                     </Boton>
