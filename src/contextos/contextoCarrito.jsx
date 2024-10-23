@@ -51,14 +51,14 @@ const ProveedorCarrito = ({ children }) => {
   }];
 
   const agregarProducto = (id, nombre) => {
-    const productosExistentes = carrito.find((producto) => producto.id === id);
-    if (productosExistentes) {
-      cambiarCarrito(carrito.map((producto) => {
-        return producto.id === id ? { ...producto, cantidad: (producto.cantidad || 1) + 1 } : producto;
-      }));
-    } else {
-      cambiarCarrito([...carrito, { id: id, nombre: nombre, cantidad: 1 }]);
-    }
+      const productoExistente = carrito.find((producto) => producto.id === id);
+      if(productoExistente){
+        cambiarCarrito(carrito.map((producto) => {
+          return producto.id === id ? {...producto, cantidad: Number(producto.cantidad || 1) + 1} : producto;
+        }));
+      } else {
+        cambiarCarrito([...carrito, {id, nombre, cantidad: 1}]);
+      }
   };
 
   const eliminarProducto = (id) => {
@@ -67,21 +67,21 @@ const ProveedorCarrito = ({ children }) => {
   };
 
   const agregarMas = (id) => {
-    const nuevoCarrito = carrito.map((producto) => {
-      if(producto.id === id){
-        return {...producto, cantidad: producto.cantidad +1};
-      } else {
-        return producto;
-      }
-    });
-    cambiarCarrito(nuevoCarrito);
+    const nuevoCarrito = carrito.find((producto) => producto.id === id);
+    if(nuevoCarrito){
+      cambiarCarrito(carrito.map((producto) => {
+        return producto.id === id ? {...producto, cantidad: Number(producto.cantidad || 1) + 1} : producto;
+      }));
+    }
   };
 
   const reducirCantidad = (id) => {
-    const nuevoProducto = carrito.map((producto) => {
-      return producto.id === id && producto.cantidad !==1 ? {...producto, cantidad: producto.cantidad -1} : producto
-    });
-    cambiarCarrito(nuevoProducto);
+    const nuevoCarrito = carrito.find((producto) => producto.id === id);
+    if(nuevoCarrito && nuevoCarrito.cantidad > 1){
+      cambiarCarrito(carrito.map((producto) => {
+        return producto.id === id ? {...producto, cantidad: producto.cantidad - 1} : producto;
+      }));
+    }
   };
 
   return (
